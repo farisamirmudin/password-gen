@@ -2,7 +2,7 @@ version: "3"
 
 services:
   web:
-    build: .
+    image: nginx:alpine-slim
     volumes:
       - ./dist:/usr/share/nginx/html
     ports:
