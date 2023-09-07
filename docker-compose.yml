@@ -3,5 +3,7 @@ version: "3"
 services:
   web:
     build: .
+    volumes:
+      - ./dist:/usr/share/nginx/html
     ports:
-      - 80:80
+      - "80:80"

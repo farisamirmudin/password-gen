@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -12,49 +12,12 @@
     <title>Password generator</title>
   </head>
   <body class="container-lg">
-    <p class="fs-1">Generate a secure password</p>
-    <div class="mb-3 form-control" id="generated-password"></div>
-    <div class="mb-3">
-      <label for="password-length__input" class="form-label">
-        Password length <span id="password-length__value"></span>
-      </label>
-      <input
-        type="range"
-        class="form-range"
-        id="password-length__input"
-        min="8"
-        max="32"
-        value="12"
-      />
-    </div>
+    <div id="app"></div>
+    <script type="module" src="src/main.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
-    <script>
-      const charset =
-        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+[]{}|;:<>?";
-      function randomizeCharset(length) {
-        if (length === 0) return "";
-        const randomIndex = Math.floor(Math.random() * charset.length);
-        return charset.charAt(randomIndex) + randomizeCharset(length - 1);
-      }
-
-      function generatePassword() {
-        const passwordLength = document.querySelector(
-          "#password-length__input"
-        ).value;
-        document.querySelector("#password-length__value").textContent =
-          passwordLength;
-        const password = randomizeCharset(passwordLength);
-        document.querySelector("#generated-password").textContent = password;
-      }
-
-      document
-        .querySelector("#password-length__input")
-        .addEventListener("input", generatePassword);
-      generatePassword();
-    </script>
   </body>
 </html>
